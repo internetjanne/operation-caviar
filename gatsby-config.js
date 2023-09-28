@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     title: 'Abba',
   },
-  pathPrefix: '/gatsby-contentful-starter',
+  pathPrefix: '/operation-caviar',
   plugins: [
     {
       resolve: 'gatsby-transformer-remark',
