@@ -1,0 +1,46 @@
+@import '../theme';
+
+.base {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include mq1 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &.three-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &.two-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mq2 {
+    &.desktopColsAuto {
+      grid-template-columns: unset;
+      grid-auto-flow: column;
+      grid-auto-columns: max-content;
+    }
+  }
+}
+
+.xs {
+  grid-gap: 10px;
+}
+
+.sm {
+  grid-gap: 15px;
+}
+
+.md {
+  grid-gap: 20px;
+}
+
+.lg {
+  grid-gap: 25px;
+}
+
+.xl {
+  grid-gap: 30px;
+}

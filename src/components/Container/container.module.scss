@@ -1,0 +1,19 @@
+@import '../theme';
+
+.base {
+  padding: 0 $space2;
+  margin: 0 auto;
+  position: relative;
+
+  @include mq1 {
+    box-sizing: border-box;
+    padding: 0 $space3;
+    max-width: $breakpoint2;
+  }
+}
+
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

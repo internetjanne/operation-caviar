@@ -1,0 +1,33 @@
+@import '../theme';
+
+.base {
+  display: grid;
+  grid-auto-rows: minmax($space2, auto);
+}
+
+.threeCol {
+  grid-template-columns: repeat(3, 1fr);
+
+  & > :not(:nth-child(3n + 1)) {
+    text-align: right;
+  }
+}
+
+.twoCol {
+  grid-template-columns: repeat(2, 1fr);
+
+  & > div:nth-child(even) {
+    text-align: right;
+  }
+}
+
+.column__heading {
+  color: $white;
+  font-weight: 700;
+}
+
+.column__heading,
+.cell {
+  padding: $u 0;
+  border-bottom: 1px solid rgba(197, 172, 255, 0.1);
+}

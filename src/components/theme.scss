@@ -1,0 +1,262 @@
+// BASE COLORS
+$black: #000;
+$white: #fff;
+$pale: #eee;
+$blue: #0076ff;
+$teal: #1ec18e;
+$darkGray: #222;
+$violette: #fa0;
+//$violette: #5200ff;
+
+// FUNCTIONAL COLORS
+$foreground1: $black;
+$foreground2: rgba($black, 0.6);
+$foregroundInverted1: rgba($white, 1);
+$foregroundInverted2: rgba(mix($violette, $white, 10), 0.7);
+$foregroundInverted3: rgba(mix($violette, $white, 25), 0.4);
+
+$background1: $white;
+$background2: $pale;
+$backgroundInverted1: $black;
+$backgroundInverted2: $darkGray;
+
+$key1: $blue;
+$key2: $teal;
+
+$stroke1: rgba($black, 0.1);
+$strokeInverted1: rgba($white, 0.3);
+
+// FONTS
+$bodyFont: 'helvetica', 'arial', sans-serif;
+$headingFont: 'news-gothic-std', 'helvetica', 'arial', sans-serif;
+
+@mixin headingStyle {
+  font-family: $headingFont;
+  font-weight: 100;
+  font-style: italic;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1;
+  font-display: swap;
+}
+
+// FILLS
+
+$blue: #fa0;
+//$blue: #00f;
+$magenta: #f30;
+//$magenta: #f0f;
+$green: rgba(0, 255, 133, 1);
+
+$magentaFade: rgba(mix($magenta, $white, 50), 0.4);
+$blueFade: rgba(mix($blue, $white, 50), 0.4);
+
+@mixin gradientButton {
+  background: linear-gradient(
+                  94.35deg,
+                  $white 22.85%,
+                  mix($white, $violette, 50) 102.19%
+  );
+}
+
+@mixin gradientBottom1 {
+  background-image: radial-gradient(
+      150% 160% at 0% 100%,
+      $magentaFade 0%,
+      rgba($magenta, 0) 43.75%
+    ),
+    radial-gradient(
+      150% 130% at 100% 100%,
+      $blueFade 0%,
+      transparent 65.1%,
+      transparent 100%
+    );
+}
+
+@mixin gradientTop1 {
+  background-image: radial-gradient(
+      150% 130% at 100% 0%,
+      $magentaFade 0%,
+      rgba($magenta, 0) 58.33%
+    ),
+    radial-gradient(
+      150% 100% at 0% 0%,
+      $blueFade 0%,
+      transparent 75.52%,
+      transparent 100%
+    );
+}
+
+@mixin gradientTop2 {
+  background-image: radial-gradient(
+      100.1% 100.09% at 100% 0%,
+      rgba(104, 255, 174, 0.1) 0%,
+      rgba(0, 56, 255, 0) 58.33%
+    ),
+    radial-gradient(
+      100.1% 100.09% at 0% 0%,
+      $magenta 0%,
+      rgba(0, 0, 0, 0) 75.52%,
+      rgba(0, 0, 0, 0) 100%
+    );
+}
+
+@mixin gradientBox {
+  background-image: linear-gradient(
+      161.63deg,
+      $black,
+      mix($violette, $black, 20),
+      $black
+  );
+}
+
+// SPACERS
+$u: 10px;
+$space1: $u;
+$space2: 2 * $u;
+$space3: 3 * $u;
+$space4: 5 * $u;
+$space5: 10 * $u;
+$space6: 15 * $u;
+
+// FADES
+
+$fade1: rgba($white, 0.1);
+
+// RADIUS
+
+$radius1: 5px;
+$radius2: 10px;
+$radius3: 20px;
+$radius4: 25px;
+
+// GLOW
+
+@mixin glow {
+  pointer-events: none;
+  background-image: radial-gradient(
+      40.07% 40.07% at 50% 50%,
+      $white 0%,
+      rgba($white, 0.589177) 5.07%,
+      rgba($white, 0.408008) 7.33%,
+      rgba($white, 0.2) 13.12%,
+      rgba($white, 0.135691) 18.83%,
+      rgba($white, 0.02) 47.37%,
+      rgba($white, 0) 60.48%
+    ),
+    radial-gradient(
+      50% 50% at 50% 50%,
+      rgba($violette, 0.54) 0%,
+      rgba($violette, 0) 100%
+    );
+}
+
+@mixin validGlow {
+  pointer-events: none;
+  opacity: 0.15;
+  background: radial-gradient(
+      50% 50% at 50% 50%,
+      rgba($green, 1),
+      rgba($green, 0)
+    ),
+    radial-gradient(50% 50% at 50% 50%, rgba($blue, 1), rgba($blue, 0));
+}
+
+$error: #ff0055;
+
+@mixin invalidGlow {
+  background: radial-gradient(
+    50% 50% at 0% 100%,
+    rgba($error, 0.3) 0%,
+    rgba($error, 0) 100%
+  );
+}
+
+// Timing
+$navTransition: 1s cubic-bezier(0, 1, 0, 1);
+$navTransitionOut: 0.5s cubic-bezier(0.3, 0, 0, 1);
+
+// BREAKPOINTS
+$breakpoint1: 768px;
+$breakpoint2: 1024px;
+
+@mixin mq1 {
+  @media (min-width: #{$breakpoint1}) {
+    @content;
+  }
+}
+
+@mixin mq2 {
+  @media (min-width: #{$breakpoint2}) {
+    @content;
+  }
+}
+
+// MICRO TRANSITIONS
+@mixin mouseClick {
+  transition: 0.2s;
+  backface-visibility: hidden;
+
+  @include mq1 {
+    &:hover {
+      transform: translate(0, -1px);
+      transition-duration: 0.1s;
+    }
+  }
+
+  &:active {
+    transform: translate(0, 1px) scale(0.99);
+    transition-duration: 0s;
+  }
+}
+
+// KEYFRAMES
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+    color: $violette;
+  }
+  100% {
+    opacity: 1;
+    color: inherit;
+    transform: translateY(0px);
+  }
+}
+
+// SHARED MISC
+
+$headerHeight: 60px;
+$headerHeightLarge: 90px;
+
+@mixin box {
+  border-radius: $radius1;
+  max-width: 600px;
+  @include gradientBox;
+  box-shadow: 0 4px 50px 5px #000000;
+}
+@mixin errorBox {
+  @include box;
+  background: radial-gradient(
+    100% 100% at 20% 0%,
+    rgba($error, 0.2) 0%,
+    rgba(mix($black, $white, 95), 1) 80%
+  );
+}
+
+@mixin focus {
+  opacity: 0;
+  position: absolute;
+  left: -5px;
+  right: -5px;
+  top: -5px;
+  bottom: -5px;
+  border: solid 3px;
+  color: $foregroundInverted3;
+  border-radius: $radius4;
+  transition: 0.2s;
+}
+
+@mixin textMaxWidth {
+  max-width: 30em;
+}

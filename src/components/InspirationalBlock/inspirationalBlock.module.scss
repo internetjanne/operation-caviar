@@ -1,0 +1,167 @@
+@import '../theme';
+
+.base {
+  figure {
+    text-align: right;
+  }
+
+  p {
+    //padding-right: $space4;
+  }
+
+  @include mq1 {
+    margin-bottom: -300px;
+    &:first-child {
+      margin-top: 100px;
+    };
+  }
+
+  .clip > img {
+    transform: scale(1);
+    opacity: 0;
+    transition: 5s, padding-bottom 0s;
+  }
+  
+  .imageWrapper {
+    @include mq1 {
+      transform: translateX(2%);
+      transition: 5s, padding-bottom 0s, width 0s, max-width 0s;
+    }
+  }
+
+  &.isOdd {
+    .imageWrapper {
+      @include mq1 {
+        transform: translateX(-2%);
+        transition: 5s, padding-bottom 0s;
+      }
+    }
+  }
+
+  &.isInView {
+    .clip > img {
+      transition: transform 10s, opacity 5s;
+      opacity: 1;
+      transform: scale(1.05) translateX(0);
+
+    }
+    .imageWrapper {
+      @include mq1 {
+        transform: translateX(0);
+      }
+    }
+  }
+}
+
+.clip {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  //overflow: hidden;
+
+  @include mq1 {
+    //border-radius: 100%;
+  }
+}
+
+.isOdd {
+  p {
+    padding-right: 0;
+  }
+  figure {
+    margin-left: -$space2;
+    margin-right: -$space2;
+  }
+
+  .text {
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  .image {
+    @include mq1 {
+      transform: translate(-10%, -50%);
+    }
+  }
+}
+
+.text {
+  z-index: 2;
+  position: relative;
+  max-width: 20em;
+}
+
+.body {
+  position: relative;
+  z-index: 1;
+}
+
+.imageWrapper {
+  //mix-blend-mode: screen;
+  position: relative;
+  margin-left: -$space2;
+  margin-right: -$space2;
+  padding-bottom: 140%;
+
+  margin-top: -20vw;
+
+  @include mq1 {
+    margin-top: 0;
+    padding-bottom: 80%;
+    margin-left: 20%;
+    width: 80%;
+  }
+}
+
+.image {
+  position: absolute;
+  left: 0;
+
+  @include mq1 {
+    transform: translate(10%, -50%);
+  }
+
+  width: 100%;
+  height: 100%;
+
+  .clip > img {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+
+    @include mq1 {
+      //border-radius: 100%;
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    bottom: -1px;
+    right: -1px;
+    //background-image: radial-gradient(
+    //                50% 50% at 50% 50%, rgba(0, 0, 0, 0) 0%,
+    //                rgba(0, 0, 0, 0.5) 40%,
+    //                rgba(0, 0, 0, 1) 100%, #000000 100%);
+    background-size: 140% 100%;
+    background-position: center;
+
+    @include mq1 {
+      background-size: 100% 100%;
+      //border-radius: 100%;
+      //background-image: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0) 0%, #000000 100%);
+    }
+  }
+}
+
+
+.noImage {
+  height: 50px;
+
+  @include mq1 {
+    height: 500px;
+  }
+}

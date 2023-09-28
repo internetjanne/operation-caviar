@@ -1,0 +1,103 @@
+@import '../theme';
+
+.base {
+  display: block;
+}
+
+.t1 {
+  padding-top: $space1;
+}
+
+.t2 {
+  padding-top: $space2;
+}
+
+.t3 {
+  padding-top: $space3;
+}
+
+.t4 {
+  padding-top: $space4;
+}
+
+.t5 {
+  padding-top: $space5;
+}
+
+.t6 {
+  padding-top: $space6;
+}
+
+.b1 {
+  padding-bottom: $space1;
+}
+
+.b2 {
+  padding-bottom: $space2;
+}
+
+.b3 {
+  padding-bottom: $space3;
+}
+
+.b4 {
+  padding-bottom: $space4;
+}
+
+.b5 {
+  padding-bottom: $space5;
+}
+
+.b6 {
+  padding-bottom: $space6;
+}
+
+@include mq1 {
+  .tLarge1 {
+    padding-top: $space1;
+  }
+
+  .tLarge2 {
+    padding-top: $space2;
+  }
+
+  .tLarge3 {
+    padding-top: $space3;
+  }
+
+  .tLarge4 {
+    padding-top: $space4;
+  }
+
+  .tLarge5 {
+    padding-top: $space5;
+  }
+
+  .tLarge6 {
+    padding-top: $space6;
+  }
+
+  .bLarge1 {
+    padding-bottom: $space1;
+  }
+
+  .bLarge2 {
+    padding-bottom: $space2;
+  }
+
+  .bLarge3 {
+    padding-bottom: $space3;
+  }
+
+  .bLarge4 {
+    padding-bottom: $space4;
+  }
+
+  .bLarge5 {
+    padding-bottom: $space5;
+  }
+
+  .bLarge6 {
+    padding-bottom: $space6;
+  }
+}

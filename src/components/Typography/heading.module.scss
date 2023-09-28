@@ -1,0 +1,12 @@
+@import '../theme.scss';
+
+.base {
+  @include headingStyle;
+  color: $foregroundInverted1;
+  position: relative;
+  overflow: hidden;
+}
+
+.noMargin {
+  margin: 0;
+}

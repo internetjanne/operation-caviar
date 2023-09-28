@@ -1,0 +1,107 @@
+@use "sass:math";
+@import '../theme';
+
+:global {
+  .content > {
+    * {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .discrete {
+      color: $foregroundInverted3;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-bottom: 0.5em;
+      margin-top: 0;
+      @include headingStyle;
+      color: $foregroundInverted1;
+      @include textMaxWidth;
+    }
+
+    p {
+      line-height: 1.2;
+      max-width: 10em;
+      @include textMaxWidth;
+
+      > b {
+        font-weight: bold;
+        color: $foregroundInverted1;
+      }
+
+      + {
+        h1,
+        h2,
+        h3 {
+          margin-top: 2em;
+        }
+      }
+    }
+
+    p,
+    ul,
+    ol {
+      margin-bottom: 1em;
+      margin-top: 0;
+    }
+
+    ul,
+    ol {
+      padding-left: 1em;
+
+      > li {
+        margin-top: 0.5em;
+      }
+    }
+
+    .button + .button {
+      margin-top: math.div(10, 13) + em;
+    }
+    p + .button,
+    .table + .button {
+      margin-top: math.div(20, 13) + em;
+    }
+  }
+
+  .content.inverted > {
+    p {
+      color: $foreground2;
+    }
+    h1,
+    h2,
+    h3 {
+      color: $foreground1;
+    }
+
+    .button > * > .plate:after {
+      color: $foreground2;
+    }
+
+    .button > .secondary {
+      color: $foreground1;
+    }
+    .button > :not(.secondary) {
+      color: $foregroundInverted1;
+
+      > .glow {
+        display: none;
+      }
+
+      > .plate {
+        background-image: none;
+        background-color: $foreground1;
+      }
+    }
+  }
+
+  @include mq1 {
+    max-width: $breakpoint2;
+  }
+}

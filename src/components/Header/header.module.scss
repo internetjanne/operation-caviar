@@ -1,0 +1,128 @@
+@use "sass:math";
+@import '../theme';
+
+$iconSize: 25px;
+$iconSizeLarge: 35px;
+
+.base {
+  background-color: rgba($backgroundInverted1, 0.8);
+  backdrop-filter: blur(5px);
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  > div {
+    padding: 0;
+  }
+
+  .inner {
+    color: $foregroundInverted1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    > a {
+      display: block;
+      padding: math.div(($headerHeight - $iconSize), 2) $space2;
+
+      @include mq1 {
+        padding: math.div(($headerHeightLarge - $iconSizeLarge), 2) $space3;
+      }
+    }
+  }
+}
+
+.logo {
+  width: 167.5px;
+  display: block;
+
+  @include mq1 {
+    width: 234.5px;
+  }
+}
+
+.buttons {
+  display: flex;
+}
+
+.spacer {
+  height: $headerHeight;
+
+  @include mq1 {
+    height: $headerHeightLarge;
+  }
+}
+
+.buttonWrapper {
+  background-image: linear-gradient(90deg, rgba($white, 0.1), transparent);
+  overflow: hidden;
+}
+
+.ticketButton {
+  &.hidden {
+    opacity: 0;
+
+    .button {
+      opacity: 0;
+      transform: translateY(30px) scale(0.5) rotate(45deg);
+    }
+  }
+
+  &.active {
+    opacity: 1;
+    transition: 1s;
+
+    .button {
+      opacity: 1;
+      transition-duration: 0.75s;
+      transition-timing-function: cubic-bezier(0.45, 1.58, 0.5, 0.96);
+      animation: demo2 0.75s 0s both;
+      transform: none;
+    }
+  }
+}
+
+.button {
+  color: $foregroundInverted1;
+  background-color: transparent;
+  width: auto;
+  height: $headerHeight;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  padding: math.div(($headerHeight - $iconSize), 2) $space2;
+
+  @include mq1 {
+    padding: math.div(($headerHeightLarge - $iconSizeLarge), 2) $space3;
+    height: $headerHeightLarge;
+  }
+
+  @include mouseClick();
+  svg {
+    display: block;
+    height: $iconSize;
+
+    @include mq1 {
+      height: $iconSizeLarge;
+    }
+    * {
+      fill: $foregroundInverted1;
+    }
+  }
+
+  &.burger {
+    svg {
+      max-width: $iconSize;
+
+      @include mq1 {
+        max-width: $iconSizeLarge;
+        min-width: $iconSizeLarge;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@import '../theme';
+
+.base {
+  position: relative;
+  padding-bottom: 14.93%;
+  width: 100%;
+
+  svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transform: scale(1.2);
+    transform-origin: 0 0;
+    display: block;
+  }
+}

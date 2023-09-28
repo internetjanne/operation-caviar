@@ -1,0 +1,54 @@
+@use 'sass:math';
+@import '../theme';
+
+.base {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.75em;
+
+  @include mq1 {
+    font-size: 1em;
+  }
+
+  &.clickable {
+    cursor: pointer;
+  }
+}
+
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  max-width: 75%;
+  height: auto;
+  background-color: #111;
+  border-radius: 100%;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 0;
+    padding-bottom: math.div(100%, math.div(1, 1));
+  }
+}
+
+.image {
+  object-fit: cover;
+  border-radius: 100%;
+  width: 100%;
+  display: block;
+}
+
+.name {
+  margin-top: $u;
+  margin-bottom: math.div($u, 2);
+  color: $white;
+  text-align: center;
+  font-weight: 700;
+}
+
+.title {
+  text-align: center;
+  margin: 0;
+}

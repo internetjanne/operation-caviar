@@ -1,0 +1,11 @@
+@import '../theme';
+
+.base {
+  text-align: center;
+  padding: $space4 $space2;
+  @include box;
+}
+
+.content {
+  margin-bottom: $space4;
+}

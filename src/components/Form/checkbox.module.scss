@@ -1,0 +1,101 @@
+@import '../theme';
+
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+  @include mouseClick;
+
+  .box {
+    flex-shrink: 0;
+    margin-right: $space2;
+    width: 32px;
+    height: 32px;
+    border-radius: $radius1;
+    background-color: $fade1;
+    position: relative;
+    transition: 0.3s;
+
+    &:before {
+      content: '';
+      @include focus;
+      border-radius: $radius2;
+    }
+
+    > div {
+      overflow: hidden;
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: 2;
+
+      > svg {
+        width: 27px;
+        position: absolute;
+        display: block;
+        left: 8px;
+        top: -1px;
+        z-index: 2;
+        color: $white;
+        opacity: 0;
+        transform: translate(15px, -15px) scale(2);
+        transition: 0.1s;
+      }
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      @include validGlow;
+      opacity: 0;
+      transition: 0.3s;
+    }
+  }
+
+  &.checked {
+    .box {
+      > div > svg {
+        opacity: 1;
+        transform: none;
+      }
+      &:after {
+        opacity: 0.15;
+      }
+    }
+  }
+
+  &.disabled {
+    color: $foregroundInverted3;
+    pointer-events: none;
+
+    .box {
+      background-color: $foregroundInverted3;
+
+      > div > svg {
+        color: $foreground1;
+      }
+
+      &:after {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+
+  &:focus ~ {
+    .box {
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+}

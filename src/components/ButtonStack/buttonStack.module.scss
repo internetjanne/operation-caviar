@@ -1,0 +1,27 @@
+@import '../theme';
+
+.base {
+  display: inline-block;
+  width: 100%;
+
+  @include mq1 {
+    width: auto;
+
+    :global .content {
+      display: flex;
+      justify-content: center;
+      .button, .button > * {
+        flex-grow: 1;
+        flex-basis: 0;
+        display: inline-flex;
+        width: 230px;
+      }
+    }
+
+
+    :global .button + .button {
+      margin-top: 0;
+      margin-left: $space2;
+    }
+  }
+}

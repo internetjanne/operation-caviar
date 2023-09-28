@@ -1,0 +1,59 @@
+@import '../theme';
+
+.base {
+  background-color: $backgroundInverted1;
+  position: relative;
+  margin-bottom: -50px;
+
+  .map {
+    padding: $space3 0 ($space3 + 50);
+    max-width: 1440px;
+    margin: auto;
+    background-image: url('./map2.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow:
+            $backgroundInverted1 0 0 10px 10px inset,
+            $backgroundInverted1 0 0 80px 80px inset;
+    height: 100vw;
+
+    @include mq1 {
+      box-shadow:
+              $backgroundInverted1 0 0 50px 50px inset,
+              $backgroundInverted1 0 0 150px 150px inset;
+      height: 500px;
+    }
+
+    .header {
+      text-align: left;
+    }
+  }
+
+  .marker {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: $foregroundInverted1;
+
+    > small {
+      display: block;
+      font-weight: bold;
+    }
+  }
+
+  .button {
+    position: absolute;
+    bottom: $space4;
+    left: $space2;
+    right: $space2;
+  }
+}
+
+.logo {
+  width: 167px;
+  display: inline-block;
+  margin-bottom: $space1;
+}

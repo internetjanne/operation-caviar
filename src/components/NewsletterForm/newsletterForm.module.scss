@@ -1,0 +1,84 @@
+@import '../theme';
+
+.base {
+  margin-left: -$space2;
+  margin-right: -$space2;
+
+  @include mq1 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .slider {
+    width: 200%;
+    display: flex;
+    transition: .3s;
+
+    > div {
+      flex-grow: 1;
+      flex-basis: 0;
+      transition: .3s;
+      padding: 0 $space2;
+
+      @include mq1 {
+        padding: 0;
+      }
+    }
+
+    .afterPosted {
+      height: 0;
+      opacity: 0;
+      pointer-events: none;
+
+      > div {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        background-color: $fade1;
+
+        padding: $space4 $space2;
+        border-radius: 5px;
+        @include box;
+      }
+
+      &.error {
+        > div {
+          @include errorBox;
+        }
+      }
+    }
+  }
+  
+  &.posted {
+    .slider {
+      transform: translateX(-50%);
+
+      .afterPosted {
+        opacity: 1;
+        pointer-events: initial;
+      }
+
+      .beforePosted {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.consentWrapper {
+  animation: fadeIn 2s .2s both cubic-bezier(0, 1, 0, 1);
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      height: 0;
+      padding-top: 0;
+    }
+    100% {
+      height: auto;
+      padding-top: $space3;
+      opacity: 1;
+    }
+  }
+}

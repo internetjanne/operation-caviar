@@ -1,0 +1,71 @@
+{
+  "name": "operation-caviar",
+  "description": "A Gatsby site for ...",
+  "version": "1.0.0",
+  "author": "Isotop <hej@isotop.se>",
+  "dependencies": {
+    "@babel/eslint-parser": "^7.14.7",
+    "classnames": "^2.3.1",
+    "eslint-config-prettier": "^8.3.0",
+    "gatsby": "^3.10.0",
+    "gatsby-plugin-client-side-redirect": "^1.1.0",
+    "gatsby-plugin-image": "^1.10.0",
+    "gatsby-plugin-portal": "^1.0.7",
+    "gatsby-plugin-react-helmet": "^4.10.0",
+    "gatsby-plugin-sass": "^4.10.0",
+    "gatsby-plugin-sharp": "^3.10.0",
+    "gatsby-remark-embed-video": "^3.1.1",
+    "gatsby-remark-images": "^5.7.0",
+    "gatsby-remark-responsive-iframe": "^4.7.0",
+    "gatsby-source-contentful": "^5.10.0",
+    "gatsby-transformer-remark": "^4.7.0",
+    "gatsby-transformer-sharp": "^3.10.0",
+    "lodash": "^4.17.21",
+    "lottie-react": "^2.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "sass": "^1.32.8"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "eslint": "^7.31.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-react": "^7.24.0",
+    "husky": "7.0.1",
+    "prettier": "^2.3.2",
+    "rimraf": "^3.0.2",
+    "yargs-parser": "^20.2.9"
+  },
+  "engines": {
+    "node": ">=10.13.0"
+  },
+  "homepage": "https://github.com/contentful-userland/gatsby-contentful-starter#readme",
+  "keywords": [
+    "gatsby",
+    "contentful"
+  ],
+  "license": "MIT",
+  "main": "n/a",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/contentful-userland/gatsby-contentful-starter.git"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn lint"
+    }
+  },
+  "scripts": {
+    "dev": "npm run develop",
+    "develop": "gatsby develop -H 0.0.0.0",
+    "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md' 'bin/*.js'",
+    "build": "gatsby build",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
+    "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix *.js bin/*.js",
+    "start": "npm run develop",
+    "heroku-postbuild": "gatsby build"
+  }
+}

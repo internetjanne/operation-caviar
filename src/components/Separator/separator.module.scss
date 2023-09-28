@@ -1,0 +1,26 @@
+@import '../theme';
+
+.base {
+  height: $space5;
+  position: relative;
+  z-index: -1;
+  pointer-events: none;
+  
+  &.reverse {
+    transform: rotate(180deg);
+  }
+
+  @include mq1 {
+    height: $space6;
+  }
+}
+
+.hasFade:after {
+  content: '';
+  @include gradientTop1;
+  transform: skewY(3deg);
+  height: 470px;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+}

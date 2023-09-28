@@ -1,0 +1,242 @@
+@use "sass:math";
+@import '../theme';
+
+.wrapper {
+  display: flex;
+  font-size: math.div(13, 20) + em;
+  z-index: 2;
+
+  &.wrapperBlock {
+    width: 100%;
+
+    @include mq1 {
+      width: auto;
+    }
+  }
+}
+
+.base {
+  padding: (math.div(30, 13) + em) (math.div(40, 13) + em);
+  appearance: none;
+  border: 0;
+  outline: 0;
+  position: relative;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: inline-flex;
+  font-size: 1em;
+  align-items: center;
+  justify-content: center;
+  font-family: $headingFont;
+  font-display: swap;
+  letter-spacing: 0.13em;
+  background-color: transparent;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: $foreground1;
+
+  &:focus:not(:hover) {
+    box-shadow: none;
+
+    .plate:after {
+      opacity: 1;
+    }
+  }
+
+  &:hover {
+    color: $foreground1;
+  }
+
+  @include mouseClick;
+
+  svg {
+    margin-left: math.div(10, 13) + em;
+    width: math.div(30, 13) + em;
+  }
+
+  &.back {
+    flex-direction: row-reverse;
+
+    svg {
+      transform: rotate(180deg);
+      margin-left: 0;
+      margin-right: $space1;
+    }
+  }
+}
+
+.secondary {
+  color: $foregroundInverted1;
+
+  .plate {
+    background-color: transparent;
+    box-shadow: inset 0 0 0 2px;
+    background-image: none;
+  }
+
+  &:hover {
+    color: $foregroundInverted1;
+  }
+}
+
+.block {
+  flex-basis: 100%;
+}
+
+.blockSmallOnly {
+  flex-basis: 100%;
+  margin: 0 $space2;
+
+  @include mq1 {
+    margin: 0;
+    flex-basis: unset;
+  }
+}
+
+@mixin disabled {
+  transform: scale(0.95);
+  pointer-events: none;
+  transition: 0.3s;
+
+  .plate {
+    background-image: linear-gradient(transparent, transparent);
+    background-color: $foregroundInverted3;
+    color: $foreground1;
+    border: 0;
+  }
+
+  .glowWrapper.inView {
+    opacity: 0;
+  }
+}
+
+.loading {
+  @include disabled;
+  .plate {
+    overflow: hidden;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      animation: load 3s linear both;
+      background-color: $foregroundInverted3;
+      opacity: 1;
+      transform-origin: 0 0;
+
+      @keyframes load {
+        0% {
+          transform: translateX(-100%);
+        }
+        30% {
+          transform: translateX(-27%);
+        }
+        48% {
+          transform: translateX(-25%);
+        }
+        68% {
+          transform: translateX(-15%);
+        }
+        88% {
+          transform: translateX(-14%);
+        }
+        89% {
+          transform: translateX(-10%);
+        }
+        100% {
+          transform: translateX(-2%);
+        }
+      }
+    }
+  }
+}
+
+.disabled {
+  @include disabled;
+}
+
+.alignCenter {
+  justify-content: center;
+}
+
+.alignRight {
+  justify-content: flex-end;
+}
+
+.pullLeftDesktop {
+  @include mq2 {
+    order: -1;
+    margin-left: 0;
+    margin-right: 20px;
+  }
+}
+
+.glowWrapper {
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+  left: 40px;
+  z-index: 1;
+  width: 250px;
+  height: 150px;
+  transform: translate(-00%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  .glow {
+    width: 250px;
+    left: 0;
+    top: 0;
+    height: 150px;
+    position: absolute;
+
+    @include glow;
+  }
+
+  &.inView {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+
+    .glow {
+      @keyframes appear {
+        0% {
+          transform: translateX(10%);
+          opacity: 0;
+        }
+        100% {
+          transform: translate(0);
+          opacity: 1;
+        }
+      }
+
+      animation: appear 1s 0.5s both;
+    }
+  }
+}
+
+.plate {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transform: skew(-7deg);
+  @include gradientButton;
+
+  &:after {
+    content: '';
+    @include focus;
+    border-radius: 1px;
+  }
+}
+
+.label {
+  z-index: 3;
+  white-space: nowrap;
+  position: relative;
+}

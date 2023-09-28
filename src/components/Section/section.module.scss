@@ -1,0 +1,14 @@
+@import '../theme';
+
+.base {
+  position: relative;
+  z-index: 1;
+}
+
+.black {
+  background-color: $black;
+}
+
+.blackFade {
+  background-image: linear-gradient(transparent, #000, #000);
+}
