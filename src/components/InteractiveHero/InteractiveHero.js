@@ -125,7 +125,7 @@ const InteractiveHero = ({ tagline1, tagline2, tagline3, tagline4 }) => {
             height: '100%',
             width: '100%',
           }}
-          src="/tlp10/index.html"
+          src="./tlp10/index.html"
         />
       </ScrollSection>
     </section>
